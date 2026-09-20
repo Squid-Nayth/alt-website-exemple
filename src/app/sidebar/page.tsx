@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { HiX } from "react-icons/hi"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { useState } from "react"
+import { createPortal } from "react-dom"
 
 import { useFadeIn } from "@/library/animations/useFadeIn"
 import { useRef, useEffect, MutableRefObject } from "react"
@@ -41,7 +42,7 @@ export default function SidebarPage() {
     
     useStaggerZoom(menuItemRefs as MutableRefObject<(HTMLDivElement | null)[]>, 0.5);
 
-    return (
+    return createPortal(
         <div className="fixed inset-0 z-[9999] w-[100vw] h-[100vh] bg-alt-slate flex flex-col lg:px-10 lg:pt-10 md:px-10 md:py-7 lg:gap-2 px-7 py-7 overflow-y-auto">
 
             {/* Top-right Contact + Close */}
@@ -127,6 +128,7 @@ export default function SidebarPage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     )
 }
