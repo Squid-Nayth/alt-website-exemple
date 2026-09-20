@@ -1,0 +1,72 @@
+"use client"
+
+
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+const Canva = "/second/landing-page/story/storycanvas.png";
+const UIUX = "/second/landing-page/story/uiux.png";
+const Brand = "/second/landing-page/story/improve.png";
+import { useFadeIn } from "@/library/animations/useFadeIn"
+import { useRef } from "react"
+
+export default function StoryWork() {
+    const headRef  = useRef<HTMLHeadingElement>(null);
+    const btnRef   = useRef<HTMLButtonElement>(null);
+    const imcaRef  = useRef<HTMLDivElement>(null);
+    const imdegRef = useRef<HTMLDivElement>(null);
+    const imbRef   = useRef<HTMLDivElement>(null);
+
+    useFadeIn(headRef, 0.3);
+    useFadeIn(btnRef, 0.3);
+    useFadeIn(imcaRef, 0.3);
+    useFadeIn(imdegRef, 0.3);
+    useFadeIn(imbRef, 0.3);
+
+    return (
+        <div className="max-w-full w-full lg:px-20 lg:pt-20 lg:pb-5 md:px-14 md:py-18 px-5 py-14 bg-neutral-200">
+            <div className="w-full lg:gap-26 gap-8 flex flex-col">
+                <div className="w-full flex lg:flex-row md:flex-row flex-col lg:justify-between md:justify-between">
+                    <h3 ref={headRef} className="font-sans font-normal text-neutral-800 lg:text-5xl text-3xl leading-[150%]">
+                        Latest insights, stories, <br />
+                        and news from ALT.
+                    </h3>
+
+                    <Button ref={btnRef} className="justify-center gap-[9px] lg:mt-[100px] md:mt-13 mt-10 lg:ml-0 md:ml-0 ml-[-150px]">
+                        <p className="text-neutral-800 text-base font-normal">Explore the Insight</p>
+                        <ArrowRight height={25} width={25} className="mt-[3px] text-neutral-800" />
+                    </Button>
+                </div>
+
+                <div className="w-full flex flex-col lg:gap-18 gap-12">
+                    <div className="w-full flex lg:flex-row md:flex-row flex-col lg:gap-20 gap-12">
+                        <div ref={imcaRef} className="w-full">
+                            <img
+                                src={Canva}
+                                alt="business model canvas"
+                                className="lg:scale-[95%] grayscale"
+                            />
+                        </div>
+                        <div ref={imdegRef} className="w-full lg:pt-30">
+                            <img
+                                src={UIUX}
+                                alt="business model canvas"
+                                className="lg:scale-[95%] grayscale"
+                            />
+                        </div>
+                    </div>
+                    <div ref={imbRef} className="w-full lg:pl-10">
+                        <img
+                            src={Brand}
+                            alt="business model canvas"
+                            className="lg:scale-[55%] lg:mt-[-200px] lg:ml-[-100px] grayscale"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+
+

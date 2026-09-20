@@ -1,0 +1,120 @@
+"use client"
+
+import { Button } from "../ui/button"
+import { insightBlog } from "@/data/insight"
+import { Link } from "react-router-dom";
+import { useRef, useState } from "react"
+import { ArrowRight } from "lucide-react"
+
+import { useFadeIn } from "@/library/animations"
+// Import useStaggerChildren
+import { useStaggerChildren } from "@/library/animations/useStaggerChildren";
+
+
+export default function OtherInsight() {
+    const [showAll, setShowAll] = useState(false);
+    const blogsToShow = showAll ? insightBlog : insightBlog.slice(0, 3);
+
+    // Ref terpisah untuk kontainer Mobile dan Desktop
+    const contentRefMobile = useRef<HTMLDivElement>(null);
+    const contentRefDesktop = useRef<HTMLDivElement>(null);
+
+    const headerRef = useRef<HTMLHeadingElement>(null);
+    const btnRef = useRef<HTMLDivElement>(null);
+
+    // Animasi Header dan Tombol
+    useFadeIn(headerRef, 0.3)
+    useFadeIn(btnRef, 0.3)
+    // useSlideFromTop(contentRef, 0.3) dihapus, diganti stagger
+
+    // Terapkan useStaggerChildren pada ref Mobile dan Desktop
+    // Menargetkan elemen dengan class '.insight-item'
+    useStaggerChildren(contentRefMobile, ".insight-item", 0.5);
+    useStaggerChildren(contentRefDesktop, ".insight-item", 0.5);
+
+    return (
+        <div className="max-w-full w-full lg:px-20 lg:py-20 px-7 py-7 bg-[#F5F5F5]">
+            <div className="w-full flex flex-col lg:gap-18 gap-9">
+                <div className="flex lg:flex-row flex-col lg:justify-between justify-left items-left gap-5">
+                    {/* Hapus style={{ opacity: 0 }} karena useSlideFromTop sudah menanganinya */}
+                    <h3 ref={headerRef} className="font-sans font-normal text-black lg:text-4xl text-3xl">Other Insight</h3>
+                    <div ref={btnRef}>
+                        <Button className="flex flex-row items-center gap-3 ml-[-10px]">
+                            <Link to="/insight" className="flex flex-row items-center gap-2">
+                                <span className="text-black lg:text-lg text-base font-normal">
+                                    Explore the Insight
+                                </span>
+                                <ArrowRight
+                                    height={20}
+                                    width={20}
+                                    className="text-black lg:h-[22px] lg:w-[22px] h-[25px] w-[25px]"
+                                />
+                            </Link>
+                        </Button>
+                    </div>
+
+                </div>
+
+                {/* Mobile View */}
+                <div ref={contentRefMobile} className="block md:hidden space-y-8">
+                    {blogsToShow.map((item, index) => (
+                        <Link to={item.url}
+                            // Tambahkan class insight-item dan style awal untuk useStaggerChildren
+                            className="flex flex-col gap-3 insight-item"
+                            style={{ opacity: 0 }}
+                        >
+                            <div className="relative w-full h-[200px]">
+                                <img
+                                    src={item.image.replace("public/", "/")}
+                                    alt={item.title}
+                                    fill
+                                    className="object-cover rounded-md cursor-pointer"
+                                />
+                            </div>
+                            <h3 className="font-normal text-xl text-black lg:cursor-pointer">{item.title}</h3>
+                            <p className="text-base text-gray-500">{item.date}</p>
+
+                        </Link>
+
+                    ))}
+
+                    {!showAll && (
+                        <div className="pt-4 lg:invisible md:block">
+                            <Button
+                                variant="outline"
+                                className="text-xl font-normal font-sans text-black px-25"
+                                onClick={() => setShowAll(true)}
+                            >
+                                See more →
+                            </Button>
+                        </div>
+                    )}
+
+                </div>
+
+                {/* Desktop Grid */}
+                <div ref={contentRefDesktop} className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
+                    {blogsToShow.map((item, index) => (
+                        <Link to={item.url}
+                            // Tambahkan class insight-item dan style awal untuk useStaggerChildren
+                            className="flex flex-col gap-3 insight-item"
+                            style={{ opacity: 0 }}
+                        >
+                            <div className="relative w-full lg:h-[300px]">
+                                <img
+                                    src={item.image.replace("public/", "/")}
+                                    alt={item.title}
+                                    fill
+                                    className="object-cover rounded-md aspect-[1/1]"
+                                />
+                            </div>
+                            <h3 className="font-normal text-lg text-black">{item.title}</h3>
+                            <p className="text-sm text-gray-500">{item.date}</p>
+                        </Link>
+                    ))}
+
+                </div>
+            </div>
+        </div>
+    )
+}
