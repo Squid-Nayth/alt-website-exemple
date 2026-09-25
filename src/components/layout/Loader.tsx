@@ -20,6 +20,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
       const pathLength = shapeRef.current?.getTotalLength() || 4000;
 
       // 1. Initial states
+      gsap.set(containerRef.current, { clipPath: "circle(150% at 50% 50%)" });
       gsap.set(dropRef.current, { y: -800, scaleY: 1.2, scaleX: 0.8, transformOrigin: "50% 100%", opacity: 0 });
       gsap.set(shapeRef.current, { 
         fillOpacity: 0, 
@@ -76,24 +77,30 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
         duration: 0.3
       }, "-=0.3")
 
-      // 5. Spinner appears and rotates around the logo
+      // 5. Spinner appears
       .to(spinnerRef.current, {
         opacity: 1,
         duration: 0.4,
         ease: "power2.inOut"
-      })
-      .to(spinnerRef.current, {
-        rotation: 1080,
-        duration: 2,
-        ease: "power1.inOut"
-      }, "-=0.4")
+      });
+
+      // Infinite rotation for the spinner
+      gsap.to(spinnerRef.current, {
+        rotation: 360,
+        duration: 1.2,
+        ease: "none",
+        repeat: -1,
+        transformOrigin: "50% 50%"
+      });
       
-      // 6. Loader fades out completely
-      .to(containerRef.current, {
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.inOut",
-        delay: 0.2
+      // 6. Loader shrinks into a circle revealing the page underneath
+      tl.to(spinnerRef.current, { opacity: 0, duration: 0.3, delay: 1.7 }, "-=0.3");
+      
+      tl.to(containerRef.current, {
+        clipPath: "circle(0% at 50% 50%)",
+        duration: 0.8,
+        ease: "power3.inOut",
+        delay: 0
       });
 
     }, containerRef);
@@ -104,7 +111,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
   return (
     <div 
       ref={containerRef} 
-      className="fixed inset-0 z-[9999] bg-alt-light dark:bg-[#0F172A] flex items-center justify-center overflow-hidden transition-colors duration-300"
+      className="fixed inset-0 z-[9999] bg-white dark:bg-[#020617] flex items-center justify-center overflow-hidden transition-colors duration-300"
     >
       <div className="relative w-40 h-40 flex items-center justify-center">
         {/* Loading Spinner */}

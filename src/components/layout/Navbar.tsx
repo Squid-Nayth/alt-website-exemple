@@ -8,7 +8,30 @@ import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
 import { navigation } from "@/data/navigation"
 
+const searchableItems = [
+  { label: "Développement informatique", url: "/expertises/developpement", category: "Expertise" },
+  { label: "IT Consulting", url: "/expertises/it-consulting", category: "Expertise" },
+  { label: "Stratégie SEO", url: "/expertises/seo", category: "Expertise" },
+  { label: "Infogérance", url: "/expertises/infogerance", category: "Expertise" },
+  { label: "Administration réseau & SI", url: "/expertises/reseau-si", category: "Expertise" },
+  { label: "Cybersécurité", url: "/expertises/cybersecurite", category: "Expertise" },
+  { label: "Hubency (Industrie)", url: "/realisations/hubency", category: "Réalisation" },
+  { label: "MyUnisoft (Finance)", url: "/realisations/myunisoft", category: "Réalisation" },
+  { label: "Groupe GR (Arts)", url: "/realisations/groupe-gr", category: "Réalisation" },
+  { label: "Ministère de l'Économie", url: "/realisations/ministere-economie", category: "Réalisation" },
+  { label: "L'équipe", url: "/a-propos/equipe", category: "À propos" },
+  { label: "Partenaires", url: "/a-propos/partenaires", category: "À propos" },
+  { label: "Actualités & Blog", url: "/ressources/actualites", category: "Ressources" },
+  { label: "Contact", url: "/contact", category: "Contact" }
+];
+
 export default function Navbar() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  
+  const searchResults = searchQuery.length > 1 
+    ? searchableItems.filter(item => item.label.toLowerCase().includes(searchQuery.toLowerCase()))
+    : [];
   const [lang, setLang] = useState<"FR" | "EN">("FR")
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Check localStorage on mount
@@ -50,8 +73,11 @@ export default function Navbar() {
                 <Link 
                   to={item.url} 
                   className="flex items-center gap-1 cursor-pointer text-alt-slate dark:text-neutral-200 font-medium text-sm hover:text-alt-blue dark:hover:text-alt-blue transition-colors py-2"
-                  onClick={() => {
-                    if (item.url.includes('#')) {
+                  onClick={(e) => {
+                    if (item.url === '#' || item.url.startsWith('#')) {
+                      e.preventDefault();
+                    }
+                    if (item.url.includes('#') && item.url !== '#') {
                       const id = item.url.split('#')[1];
                       setTimeout(() => {
                         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -66,8 +92,11 @@ export default function Navbar() {
                 <Link 
                   to={item.url} 
                   className="text-alt-slate dark:text-neutral-200 font-medium text-sm hover:text-alt-blue dark:hover:text-alt-blue transition-colors py-2 block"
-                  onClick={() => {
-                    if (item.url.includes('#')) {
+                  onClick={(e) => {
+                    if (item.url === '#' || item.url.startsWith('#')) {
+                      e.preventDefault();
+                    }
+                    if (item.url.includes('#') && item.url !== '#') {
                       const id = item.url.split('#')[1];
                       setTimeout(() => {
                         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -127,13 +156,40 @@ export default function Navbar() {
         {/* Right Side */}
         <div className="flex items-center gap-4 lg:gap-5">
           {/* Search Bar */}
-          <div className="hidden lg:flex items-center relative">
-            <Search className="absolute left-3 w-4 h-4 text-neutral-400" />
-            <input 
-              type="text" 
-              placeholder="Rechercher..." 
-              className="bg-neutral-100 dark:bg-neutral-800 border-none rounded-full pl-9 pr-4 py-1.5 text-sm text-alt-slate dark:text-neutral-200 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-alt-blue/30 w-40 xl:w-48 transition-all"
-            />
+          <div className="hidden lg:flex flex-col relative z-50">
+            <div className="flex items-center relative">
+              <Search className="absolute left-3 w-4 h-4 text-neutral-400" />
+              <input 
+                type="text" 
+                placeholder="Rechercher..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+                className="bg-neutral-100 dark:bg-neutral-800 border-none rounded-full pl-9 pr-4 py-1.5 text-sm text-alt-slate dark:text-neutral-200 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-alt-blue/30 w-40 xl:w-48 transition-all"
+              />
+            </div>
+            
+            {/* Search Results Dropdown */}
+            {isSearchFocused && searchQuery.length > 1 && (
+              <div className="absolute top-full right-0 mt-2 w-64 bg-white dark:bg-[#1E293B] border border-neutral-200 dark:border-neutral-700 shadow-xl rounded-md py-2 flex flex-col max-h-80 overflow-y-auto">
+                {searchResults.length > 0 ? (
+                  searchResults.map((item, idx) => (
+                    <Link 
+                      key={idx} 
+                      to={item.url} 
+                      className="px-4 py-2 hover:bg-neutral-50 dark:hover:bg-[#0F172A] flex flex-col transition-colors"
+                      onClick={() => { setSearchQuery(""); setIsSearchFocused(false); }}
+                    >
+                      <span className="text-sm font-medium text-alt-slate dark:text-neutral-200">{item.label}</span>
+                      <span className="text-xs text-neutral-500 dark:text-neutral-400">{item.category}</span>
+                    </Link>
+                  ))
+                ) : (
+                  <div className="px-4 py-3 text-sm text-neutral-500 text-center">Aucun résultat trouvé</div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Dark Mode Toggle Animé */}

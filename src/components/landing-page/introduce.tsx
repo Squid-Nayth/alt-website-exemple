@@ -16,8 +16,18 @@ export default function Introduce() {
   useFadeIn(bottomRef, 0.3)
 
   return (
-    <section className="relative w-full max-w-full bg-alt-light dark:bg-[#0F172A] transition-colors duration-300 lg:px-20 md:px-14 px-8 lg:pt-24 pt-14 lg:pb-0 pb-10 overflow-hidden">
-      <div className="flex flex-col justify-between gap-16 relative z-10">
+    <section className="relative w-full max-w-full bg-alt-light dark:bg-[#0F172A] transition-colors duration-300 lg:px-20 md:px-14 px-8 lg:pt-12 pt-10 lg:pb-0 pb-10 overflow-hidden min-h-[calc(100vh-80px)] flex flex-col justify-between">
+      {/* Background Image with Gradient Overlay */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        <img 
+          src="/icones/hero4.jpg" 
+          alt="Hero Background" 
+          className="w-full h-full object-cover object-[70%_center]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-alt-light via-alt-light/95 to-alt-light/10 dark:from-[#0F172A] dark:via-[#0F172A]/95 dark:to-[#0F172A]/10"></div>
+      </div>
+      
+      <div className="flex flex-col justify-between flex-1 w-full gap-12 relative z-10">
         {/* Heading + Button */}
         <div className="flex flex-col gap-8 lg:gap-16">
           <h1
@@ -46,23 +56,12 @@ export default function Introduce() {
         {/* Images Section */}
         <div
           ref={bottomRef}
-          className="flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-4"
+          className="flex flex-col lg:flex-row justify-between items-end gap-10 lg:gap-4 pb-24 lg:pb-40"
         >
-          <div className="flex flex-col lg:flex-row items-center justify-start gap-8 lg:gap-12 lg:pt-[200px] w-full lg:w-[55%]">
+          <div className="flex flex-col lg:flex-row items-center justify-start gap-8 lg:gap-12 lg:pb-12 w-full lg:w-[65%]">
             <p className="text-alt-slate dark:text-neutral-300 font-medium leading-[140%] text-base md:text-xl lg:w-[80%] lg:text-2xl text-left">
               Des solutions concrètes et transparentes, centrées sur vos objectifs d&apos;affaires.
             </p>
-          </div>
-
-          {/* Hide this image completely in mobile (not invisible, to avoid white space) */}
-          <div className="hidden lg:block lg:w-[45%] relative lg:left-20">
-            <img
-              src="/icones/hero4.jpg"
-              alt="contributors clients"
-              width="1200"
-              height="800"
-              className="w-full h-auto object-cover shadow-xl"
-            />
           </div>
         </div>
       </div>

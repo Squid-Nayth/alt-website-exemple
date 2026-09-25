@@ -39,7 +39,7 @@ export default function UpperAbout() {
                     <img
                         src="/icones/dev.jpg"
                         alt="L'équipe ALT en réunion"
-                        className="w-full h-auto object-cover rounded-xl shadow-2xl"
+                        className="w-full h-auto object-cover rounded-none shadow-none"
                     />
                 </div>
             </div>

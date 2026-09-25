@@ -64,7 +64,7 @@ export default function SidebarPage() {
                         <img
                             src="/icones/hero3.jpg"
                             alt="ALT Image"
-                            className="rounded-md object-cover w-[600px] h-[400px] lg:mr-50 lg:mt-5 opacity-80"
+                            className="rounded-none object-cover w-[600px] h-[400px] lg:mr-50 lg:mt-5 opacity-80"
                         />
                     </div>
 

@@ -23,18 +23,18 @@ export default function Story() {
         {/* Qui nous sommes */}
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-10">
           <div className="w-full lg:w-1/2">
-            <img src="/icones/consulting.jpg" alt="Équipe ALT" className="w-full h-[400px] object-cover rounded-lg shadow-lg" />
+            <img src="/icones/consulting.jpg" alt="Équipe ALT" className="w-full h-[400px] object-cover rounded-none" />
           </div>
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-alt-slate dark:text-white">Qui sommes-nous ?</h2>
             <p className="text-lg text-alt-slate dark:text-neutral-400 leading-relaxed">
               Nous sommes une Entreprise de Services du Numérique (ESN) basée à Libreville, Gabon, dédiée à l'accompagnement des entreprises dans leur transformation digitale. Notre expertise couvre toute la chaîne de valeur IT pour garantir votre succès.
             </p>
-            <Link to="/a-propos">
-              <Button className="w-fit flex items-center gap-2 bg-alt-blue hover:brightness-110 text-white rounded-md mt-4">
-                Découvrir notre équipe
-                <ArrowRight height={18} width={18} />
-              </Button>
+            <Link to="/a-propos/equipe" className="inline-flex items-center gap-2 mt-4 text-alt-slate dark:text-white group w-fit">
+              <span className="text-lg font-medium border-b-2 border-transparent group-hover:border-alt-blue transition-colors pb-1">
+                En savoir plus sur notre équipe
+              </span>
+              <ArrowRight className="w-5 h-5 text-alt-blue group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
@@ -49,8 +49,8 @@ export default function Story() {
           </h3>
 
           <div ref={buttonRef} className="md:mt-10 lg:mt-[100px] mt-4">
-            <Link to="/ressources">
-              <Button className="flex items-center justify-center gap-3 bg-transparent border border-alt-slate dark:border-white hover:bg-alt-slate dark:hover:bg-white rounded-md px-6 group transition-colors">
+            <Link to="/ressources/actualites">
+              <Button className="flex items-center justify-center gap-3 bg-transparent border border-alt-slate dark:border-white hover:bg-alt-slate dark:hover:bg-white rounded-none px-6 group transition-colors">
                 <span className="text-alt-slate dark:text-white lg:text-xl md:text-base text-base font-normal group-hover:text-white dark:group-hover:text-alt-slate transition-colors">
                   Explorer les ressources
                 </span>
@@ -67,7 +67,7 @@ export default function Story() {
             ref={oneRef}
             className="flex flex-col gap-6 w-full cursor-pointer hover:scale-[1.02] transition-transform duration-300"
           >
-            <div className="w-full overflow-hidden rounded-lg">
+            <div className="w-full overflow-hidden rounded-none">
               <img
                 src="/icones/cybersecurity.jpg"
                 alt="Cybersécurité"
@@ -89,7 +89,7 @@ export default function Story() {
             ref={twoRef}
             className="flex flex-col gap-6 w-full lg:pt-20 cursor-pointer hover:scale-[1.02] transition-transform duration-300"
           >
-            <div className="w-full overflow-hidden rounded-lg">
+            <div className="w-full overflow-hidden rounded-none">
               <img
                 src="/icones/server.jpg"
                 alt="Infogérance"

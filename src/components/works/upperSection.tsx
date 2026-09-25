@@ -30,7 +30,7 @@ export default function UpperWorks() {
             {/* Left text */}
             <div
               ref={describeRef}
-              className="lg:w-[45%] lg:ml-[10%] w-full flex flex-col gap-6 bg-white p-8 rounded-2xl shadow-lg border border-neutral-100 z-10 lg:-mr-20"
+              className="lg:w-[45%] lg:ml-[10%] w-full flex flex-col gap-6 bg-white p-8 rounded-none border border-neutral-100 z-10 lg:-mr-20"
             >
               <h5 className="text-xl font-medium text-alt-blue uppercase tracking-wider">Réseau & Sécurité</h5>
               <h4 className="lg:text-4xl text-2xl font-normal text-alt-slate leading-[140%]">
@@ -48,7 +48,7 @@ export default function UpperWorks() {
             {/* Right image */}
             <div
               ref={imageRef}
-              className="lg:w-[55%] w-full overflow-hidden rounded-2xl shadow-xl"
+              className="lg:w-[55%] w-full overflow-hidden rounded-none shadow-none"
             >
               <img
                 src="/icones/hero1.avif"

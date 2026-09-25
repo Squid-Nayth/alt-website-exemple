@@ -67,7 +67,7 @@ export default function Worksheet() {
               </Link>
             </div>
 
-            <div ref={figeRef} className="lg:w-[80%] md:w-[50%] lg:ml-[-250px] lg:mr-[180px] w-full overflow-hidden rounded-lg shadow-xl">
+            <div ref={figeRef} className="lg:w-[80%] md:w-[50%] lg:ml-[-250px] lg:mr-[180px] w-full overflow-hidden rounded-none shadow-none">
               <img
                 src="/icones/hero1.avif"
                 alt="Projet Réseau"
@@ -78,7 +78,7 @@ export default function Worksheet() {
 
           {/* Case 2 */}
           <div className="flex lg:flex-row-reverse md:flex-row-reverse flex-col-reverse lg:items-end lg:justify-end md:justify-end md:items-end justify-start lg:ml-[200px] gap-8">
-            <div ref={sagaRef} className="lg:w-[65%] md:w-[50%] w-full overflow-hidden rounded-lg shadow-xl">
+            <div ref={sagaRef} className="lg:w-[65%] md:w-[50%] w-full overflow-hidden rounded-none shadow-none">
               <img
                 src="/icones/finance.jpg"
                 alt="Développement sur mesure"
@@ -120,7 +120,7 @@ export default function Worksheet() {
               </Link>
             </div>
 
-            <div ref={tangoRef} className="lg:w-[60%] md:w-[50%] w-full overflow-hidden rounded-lg shadow-xl">
+            <div ref={tangoRef} className="lg:w-[60%] md:w-[50%] w-full overflow-hidden rounded-none shadow-none">
               <img
                 src="/icones/hero2.avif"
                 alt="Migration Cloud"

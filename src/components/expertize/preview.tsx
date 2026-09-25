@@ -71,8 +71,8 @@ export default function ExpertiseGrid() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
         >
           {works.map((work) => (
-            <div key={work.id} className="flex flex-col gap-6 bg-white p-8 rounded-2xl shadow-lg border border-neutral-100 hover:border-alt-blue hover:shadow-xl transition-all duration-300 group">
-              <div className="w-16 h-16 bg-alt-slate rounded-xl flex items-center justify-center p-3 group-hover:bg-alt-blue transition-colors">
+            <div key={work.id} className="flex flex-col gap-6 bg-white p-8 rounded-none border border-neutral-100 hover:border-alt-blue transition-all duration-300 group">
+              <div className="w-16 h-16 bg-alt-slate rounded-none flex items-center justify-center p-3 group-hover:bg-alt-blue transition-colors">
                 <img
                   src={work.icon}
                   alt={work.title}

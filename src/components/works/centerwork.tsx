@@ -23,7 +23,7 @@ export default function CenterWork() {
                 
                 {/* Project 2 */}
                 <div className="w-full justify-start items-center flex lg:flex-row md:flex-row flex-col-reverse gap-12 lg:gap-20">
-                    <div ref={fimageRef} className="lg:w-[50%] w-full overflow-hidden rounded-2xl shadow-xl">
+                    <div ref={fimageRef} className="lg:w-[50%] w-full overflow-hidden rounded-none shadow-none">
                         <img
                             src="/icones/work1.png"
                             alt="Application Financière"
@@ -62,7 +62,7 @@ export default function CenterWork() {
                         </Button>
                     </div>
 
-                    <div ref={seimageRef} className="lg:w-[50%] w-full overflow-hidden rounded-2xl shadow-xl">
+                    <div ref={seimageRef} className="lg:w-[50%] w-full overflow-hidden rounded-none shadow-none">
                         <img
                             src="/icones/hero2.avif"
                             alt="Migration Cloud"

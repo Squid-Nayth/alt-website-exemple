@@ -68,7 +68,7 @@ export default function OtherInsight() {
                                     src={item.image.replace("public/", "/")}
                                     alt={item.title}
                                     fill
-                                    className="object-cover rounded-md cursor-pointer"
+                                    className="object-cover rounded-none cursor-pointer"
                                 />
                             </div>
                             <h3 className="font-normal text-xl text-black lg:cursor-pointer">{item.title}</h3>
@@ -105,7 +105,7 @@ export default function OtherInsight() {
                                     src={item.image.replace("public/", "/")}
                                     alt={item.title}
                                     fill
-                                    className="object-cover rounded-md aspect-[1/1]"
+                                    className="object-cover rounded-none aspect-[1/1]"
                                 />
                             </div>
                             <h3 className="font-normal text-lg text-black">{item.title}</h3>

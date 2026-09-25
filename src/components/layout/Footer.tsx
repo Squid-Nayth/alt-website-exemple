@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 import { navigation } from "@/data/navigation";
-import { ArrowRight, ArrowUpIcon, Linkedin, Facebook, Twitter } from "lucide-react";
+import { ArrowRight, ArrowUpIcon, Linkedin, Facebook } from "lucide-react";
 import { useState, useRef } from "react";
 import { z } from "zod";
 
@@ -55,7 +55,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="w-full bg-[#1F2A37] transition-colors duration-300 px-10 lg:px-20 py-20 flex flex-col gap-16">
+        <footer className="w-full bg-[#1F2A37] transition-colors duration-300 border-t border-white/10 px-10 lg:px-20 py-20 flex flex-col gap-16">
             {/* Top Section */}
             <div className="flex flex-col lg:flex-row justify-between gap-10">
                 <div className="flex flex-col lg:gap-5 gap-3">
@@ -166,9 +166,6 @@ export default function Footer() {
                         </li>
                         <li className="text-neutral-400 hover:text-white cursor-pointer transition-colors p-2 hover:bg-neutral-800 rounded-full" title="Advanced and Logic Technologies">
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook Advanced and Logic Technologies"><Facebook size={24} /></a>
-                        </li>
-                        <li className="text-neutral-400 hover:text-white cursor-pointer transition-colors p-2 hover:bg-neutral-800 rounded-full">
-                            <a href="#" aria-label="Twitter"><Twitter size={24} /></a>
                         </li>
                     </ul>
                     <div className="mt-4 flex flex-col gap-2">

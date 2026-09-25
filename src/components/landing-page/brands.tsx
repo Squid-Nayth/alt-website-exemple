@@ -61,7 +61,7 @@ export default function VisionBrand() {
             {expertises.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="flex flex-col gap-5 p-8 rounded-xl transition-all duration-300 group bg-[#1E293B] hover:bg-[#1A222C] cursor-pointer">
+                <div key={index} className="flex flex-col gap-5 p-8 rounded-none border border-neutral-700 hover:border-neutral-500 transition-all duration-300 group bg-transparent hover:bg-[#1E293B] cursor-pointer">
                   <Icon className="w-9 h-9 text-alt-blue stroke-[1.5]" />
                   <div className="flex flex-col gap-2 mt-2">
                     <h4 className="text-white text-lg font-semibold tracking-wide">{item.title}</h4>

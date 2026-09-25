@@ -113,62 +113,65 @@ export default function ExpertiseDetail() {
   }
 
   return (
-    <div className="w-full bg-white dark:bg-[#0F172A] transition-colors duration-300 lg:px-20 lg:py-24 md:px-14 md:py-16 px-6 py-12">
-      <div className="flex flex-col gap-24 lg:gap-32">
-        {/* Back Link */}
-        <div>
-            <Link to="/#expertises" className="inline-flex items-center gap-2 text-alt-blue font-medium hover:underline">
-                <ArrowLeft className="w-5 h-5" />
-                Voir toutes nos expertises
-            </Link>
-        </div>
-
-        <div className="flex flex-col gap-10 lg:gap-16 items-center lg:flex-row">
-          {/* Contenu Texte */}
-          <div className="flex flex-col gap-6 w-full lg:w-1/2">
-            <h1 className="text-4xl lg:text-5xl font-bold text-alt-slate dark:text-white">{exp.title}</h1>
-            <h2 className="text-xl lg:text-2xl text-neutral-800 dark:text-neutral-200 font-medium leading-snug">
-              {exp.subtitle}
-            </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed text-justify lg:text-left">
-              {exp.description}
-            </p>
-            
-            <ul className="flex flex-col gap-4 mt-4">
-              {exp.points.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-alt-blue shrink-0 mt-0.5" />
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium text-lg">{point}</span>
-                </li>
-              ))}
-            </ul>
+    <div className="w-full bg-white dark:bg-[#0F172A] transition-colors duration-300">
+      
+      <section className="lg:px-20 lg:pt-24 lg:pb-32 md:px-14 md:pt-16 md:pb-24 px-6 pt-12 pb-16">
+        <div className="flex flex-col gap-16 lg:gap-24">
+          {/* Back Link */}
+          <div>
+              <Link to="/#expertises" className="inline-flex items-center gap-2 text-alt-blue font-medium hover:underline">
+                  <ArrowLeft className="w-5 h-5" />
+                  Voir toutes nos expertises
+              </Link>
           </div>
 
-          {/* Image */}
-          <div className="w-full lg:w-1/2 relative group rounded-2xl overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-alt-blue/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-            <img 
-              src={exp.image} 
-              alt={exp.title} 
-              className="w-full h-auto lg:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+          <div className="flex flex-col gap-10 lg:gap-16 items-stretch lg:flex-row">
+            {/* Contenu Texte */}
+            <div className="flex flex-col justify-center gap-6 w-full lg:w-1/2">
+              <h1 className="text-4xl lg:text-6xl font-bold text-alt-slate dark:text-white leading-[110%]">{exp.title}</h1>
+              <h2 className="text-xl lg:text-2xl text-neutral-800 dark:text-neutral-200 font-medium leading-snug mt-2">
+                {exp.subtitle}
+              </h2>
+              <p className="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed text-justify lg:text-left mt-4">
+                {exp.description}
+              </p>
+              
+              <ul className="flex flex-col gap-4 mt-6">
+                {exp.points.map((point, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-alt-blue shrink-0 mt-0.5" />
+                    <span className="text-neutral-700 dark:text-neutral-300 font-medium text-lg">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Image (Rectangulaire, sans bordures arrondies ni ombres) */}
+            <div className="w-full lg:w-1/2 relative group overflow-hidden bg-alt-slate">
+              <div className="absolute inset-0 bg-alt-blue/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+              <img 
+                src={exp.image} 
+                alt={exp.title} 
+                className="w-full h-full min-h-[400px] lg:min-h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
           </div>
         </div>
-        
-        {/* CTA */}
-        <div className="flex flex-col items-center justify-center text-center mt-10 p-10 bg-alt-slate dark:bg-[#1E293B] rounded-2xl shadow-xl">
-          <h2 className="text-3xl lg:text-4xl font-medium text-white mb-6">Un projet de {exp.title.toLowerCase()} ?</h2>
-          <p className="text-neutral-300 text-lg mb-8 max-w-2xl mx-auto">
-             Contactez-nous dès aujourd'hui pour discuter de vos besoins avec nos experts et obtenir un accompagnement sur mesure.
-          </p>
-          <Link to="/contact">
-            <Button className="bg-alt-blue hover:brightness-110 text-white px-8 py-6 rounded-md text-lg flex items-center gap-2">
-              Demander un devis gratuit
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </Link>
-        </div>
-      </div>
+      </section>
+      
+      {/* Full-bleed CTA Section (Rectangulaire, pleine largeur) */}
+      <section className="w-full bg-alt-slate dark:bg-[#090E1A] py-24 lg:py-32 px-6 lg:px-20 flex flex-col items-center justify-center text-center">
+        <h2 className="text-4xl lg:text-5xl font-medium text-white mb-6">Un projet de {exp.title.toLowerCase()} ?</h2>
+        <p className="text-neutral-300 text-lg lg:text-xl mb-12 max-w-3xl mx-auto">
+           Contactez-nous dès aujourd'hui pour discuter de vos besoins avec nos experts et obtenir un accompagnement sur mesure.
+        </p>
+        <Link to="/contact">
+          <Button className="bg-alt-blue hover:bg-white hover:text-alt-slate text-white px-10 py-8 rounded-none text-lg font-medium flex items-center gap-3 transition-colors duration-300">
+            Demander un devis gratuit
+            <ArrowRight className="w-5 h-5" />
+          </Button>
+        </Link>
+      </section>
     </div>
   );
 }

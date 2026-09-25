@@ -18,7 +18,7 @@ export default function LowerSection() {
         <div className="max-w-full w-full lg:px-20 lg:py-24 md:px-14 md:py-20 px-8 py-16 bg-white">
             <div className="w-full flex lg:flex-row md:flex-row flex-col-reverse lg:gap-20 gap-12 items-center mb-16">
                 
-                <div ref={imageRef} className="lg:w-[50%] w-full overflow-hidden rounded-2xl shadow-xl">
+                <div ref={imageRef} className="lg:w-[50%] w-full overflow-hidden rounded-none shadow-none">
                     <img
                         src="/icones/hero3.jpg"
                         alt="Projet E-commerce"
@@ -26,7 +26,7 @@ export default function LowerSection() {
                     />
                 </div>
 
-                <div ref={describeRef} className="lg:w-[45%] justify-start items-start flex flex-col gap-6 bg-alt-light p-8 rounded-2xl shadow-sm border border-neutral-100 z-10 lg:-ml-20">
+                <div ref={describeRef} className="lg:w-[45%] justify-start items-start flex flex-col gap-6 bg-alt-light p-8 rounded-none border border-neutral-100 z-10 lg:-ml-20">
                     <h5 className="text-xl font-medium text-alt-blue uppercase tracking-wider">IT Consulting & Stratégie</h5>
                     <h4 className="lg:text-4xl text-2xl font-normal text-alt-slate leading-[140%]">
                         Leader e-Commerce Gabon
@@ -42,13 +42,13 @@ export default function LowerSection() {
             </div>
 
             {/* CTA */}
-            <div className="flex flex-col items-center justify-center text-center p-12 bg-alt-slate rounded-2xl mt-12 shadow-2xl">
+            <div className="flex flex-col items-center justify-center text-center p-12 bg-alt-slate rounded-none mt-12 shadow-none">
                 <h2 className="text-3xl lg:text-4xl font-medium text-white mb-6">Un projet en tête ?</h2>
                 <p className="text-neutral-300 text-lg mb-8 max-w-2xl">
                     Parlons de vos défis et découvrons ensemble comment nos solutions peuvent propulser votre entreprise.
                 </p>
                 <Link to="/contact">
-                    <Button className="bg-alt-blue hover:brightness-110 text-white px-8 py-6 rounded-md text-lg flex items-center gap-2">
+                    <Button className="bg-alt-blue hover:brightness-110 text-white px-8 py-6 rounded-none text-lg flex items-center gap-2">
                         Contactez-nous
                         <ArrowRight className="w-5 h-5" />
                     </Button>

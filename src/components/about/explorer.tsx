@@ -39,7 +39,7 @@ export default function AboutExplor() {
                     </div>
                 </div>
 
-                <div ref={imageRef} className="w-full rounded-2xl overflow-hidden shadow-2xl">
+                <div ref={imageRef} className="w-full rounded-none overflow-hidden shadow-none">
                     <img
                         src="/icones/consulting.jpg"
                         alt="Réunion avec nos partenaires"

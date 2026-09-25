@@ -23,7 +23,7 @@ export default function RootPage() {
   }, [hash]);
 
   return (
-    <div className="max-w-full">
+    <div className="max-w-full relative">
       <Introduce/>
       <VisionBrand/>
       <Worksheet/>
@@ -31,6 +31,4 @@ export default function RootPage() {
     </div>
   );
 }
-
-
 

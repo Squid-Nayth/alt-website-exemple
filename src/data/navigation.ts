@@ -10,12 +10,8 @@ export interface NavigationItem {
 
 export const navigation: NavigationItem[] = [
     {
-        label: "Accueil",
-        url: "/"
-    },
-    {
         label: "Expertises",
-        url: "/#expertises",
+        url: "/expertises-index", // This path doesn't exist, will 404
         megaMenu: [
             {
                 title: "Ingénierie & Conseil",
@@ -37,49 +33,22 @@ export const navigation: NavigationItem[] = [
     },
     {
         label: "Réalisations",
-        url: "/#realisations",
-        megaMenu: [
-            {
-                title: "Types de projet",
-                items: [
-                    { label: "E-commerce", url: "/projets?type=E-commerce", iconName: "Store" },
-                    { label: "Site vitrine", url: "/projets?type=Site vitrine", iconName: "AppWindow" },
-                    { label: "Application Métier", url: "/projets?type=Application Métier", iconName: "MonitorCog" },
-                    { label: "Infrastructure Réseau", url: "/projets?type=Infrastructure Réseau", iconName: "Network" },
-                    { label: "Migration Cloud", url: "/projets?type=Migration Cloud", iconName: "Cloud" },
-                ]
-            },
-            {
-                title: "Secteurs",
-                items: [
-                    { label: "Arts & Culture", url: "/projets?secteur=Arts %26 Culture", iconName: "Palette" },
-                    { label: "Avocats", url: "/projets?secteur=Avocats", iconName: "Scale" },
-                    { label: "B2B", url: "/projets?secteur=B2B", iconName: "Handshake" },
-                    { label: "Finance", url: "/projets?secteur=Finance", iconName: "Coins" },
-                    { label: "Immobilier", url: "/projets?secteur=Immobilier", iconName: "Home" },
-                    { label: "Mode & Beauté", url: "/projets?secteur=Mode %26 Beauté", iconName: "Shirt" },
-                    { label: "Santé & Bien-être", url: "/projets?secteur=Santé %26 Bien-être", iconName: "HeartPulse" },
-                    { label: "Associations", url: "/projets?secteur=Associations", iconName: "HeartHandshake" },
-                    { label: "Communication", url: "/projets?secteur=Communication", iconName: "Megaphone" },
-                    { label: "Éducation", url: "/projets?secteur=Éducation", iconName: "GraduationCap" },
-                    { label: "Horticulture", url: "/projets?secteur=Horticulture", iconName: "Leaf" },
-                    { label: "Industrie & Logistique", url: "/projets?secteur=Industrie %26 Logistique", iconName: "Factory" },
-                    { label: "Restauration", url: "/projets?secteur=Restauration", iconName: "Utensils" },
-                    { label: "Sport & Loisirs", url: "/projets?secteur=Sport %26 Loisirs", iconName: "Dumbbell" },
-                ]
-            }
+        url: "/realisations-index", // This path doesn't exist, will 404
+        children: [
+            { label: "Voir toutes les réalisations", url: "/realisations" }
         ]
     },
     {
         label: "À propos",
-        url: "/#a-propos",
+        url: "/a-propos-index", // This path doesn't exist, will 404
         children: [
-            { label: "Notre équipe", url: "/a-propos/equipe" }
+            { label: "Notre équipe", url: "/a-propos/equipe" },
+            { label: "Partenaires", url: "/a-propos/partenaires" }
         ]
     },
     {
         label: "Ressources",
-        url: "/#ressources",
+        url: "/ressources-index", // This path doesn't exist, will 404
         children: [
             { label: "Actualités", url: "/ressources/actualites" }
         ]

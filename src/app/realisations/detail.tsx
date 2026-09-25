@@ -17,6 +17,8 @@ type RealisationDetail = {
     text: string;
   };
   image: string;
+  imageClassName?: string;
+  imageContainerClassName?: string;
 };
 
 const realisations: RealisationDetail[] = [
@@ -50,7 +52,8 @@ const realisations: RealisationDetail[] = [
       role: "Product Manager, MyUnisoft",
       text: "Une collaboration exceptionnelle. Le design de l'application métier a révolutionné la manière dont nos clients interagissent avec la donnée financière."
     },
-    image: "/icones/work1.png",
+    image: "/icones/upbeat-software-engineer-utilizing-cloud-computing-tech.jpg",
+    imageClassName: "object-cover",
   },
   {
     id: "groupe-gr",
@@ -82,7 +85,7 @@ const realisations: RealisationDetail[] = [
       role: "Ministère de l'Économie",
       text: "Un travail d'ingénierie remarquable. La sécurité et la performance sont au rendez-vous, avec un accompagnement sans faille."
     },
-    image: "/icones/1729150870563.png",
+    image: "/icones/server.jpg",
   }
 ];
 
@@ -123,12 +126,12 @@ export default function RealisationDetail() {
         </div>
 
         {/* Right Image */}
-        <div className="lg:w-1/2 w-full h-[50vh] lg:h-full relative z-0">
+        <div className={`lg:w-1/2 w-full h-[50vh] lg:h-full relative z-0 ${projet.imageContainerClassName || ''}`}>
           <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#F4F9FF] z-10 hidden lg:block" />
           <img 
             src={projet.image} 
             alt={projet.title} 
-            className="w-full h-full object-cover"
+            className={`w-full h-full ${projet.imageClassName || 'object-cover'}`}
           />
         </div>
       </section>
@@ -182,14 +185,14 @@ export default function RealisationDetail() {
       </section>
 
       {/* AVIS CLIENT */}
-      <section className="max-w-4xl mx-auto px-6 pb-32">
-        <div className="bg-white dark:bg-[#1E293B] rounded-2xl shadow-xl p-10 md:p-16 relative overflow-hidden border border-neutral-100 dark:border-neutral-800 transition-colors">
-          <Quote className="absolute top-10 right-10 w-24 h-24 text-blue-50 dark:text-blue-900/20 opacity-50 rotate-180" />
+      <section className="w-full pb-32">
+        <div className="w-full bg-white dark:bg-[#1E293B] p-16 md:p-24 relative overflow-hidden border-y border-neutral-200 dark:border-neutral-800 transition-colors">
+          <Quote className="absolute top-10 right-10 md:top-20 md:right-20 w-32 h-32 md:w-48 md:h-48 text-blue-50 dark:text-blue-900/20 opacity-50 rotate-180" />
           
-          <div className="relative z-10 flex flex-col items-center text-center">
+          <div className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto px-6">
             <h3 className="text-sm font-bold text-[#0080FF] uppercase tracking-widest mb-8">L'avis du client</h3>
             
-            <p className="text-2xl md:text-3xl font-medium text-[#1A2352] dark:text-neutral-200 leading-snug mb-10 italic">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-[#1A2352] dark:text-neutral-200 leading-snug mb-10 italic">
               "{projet.avis.text}"
             </p>
             
@@ -208,7 +211,7 @@ export default function RealisationDetail() {
           Comme {projet.client}, confiez-nous vos défis technologiques et atteignez vos objectifs.
         </p>
         <Link to="/contact">
-          <Button className="bg-[#0080FF] hover:bg-blue-600 text-white px-8 py-6 rounded-md text-lg flex items-center gap-2 mx-auto">
+          <Button className="bg-[#0080FF] hover:bg-blue-600 text-white px-8 py-6 rounded-none text-lg flex items-center gap-2 mx-auto">
             Démarrer un projet
             <ArrowRight className="w-5 h-5" />
           </Button>
